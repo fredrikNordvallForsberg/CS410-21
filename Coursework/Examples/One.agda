@@ -5,7 +5,7 @@ This file contains some sample PGM picture in String format for you to play with
 They are in a separate file to avoid reloading them each time you
 typecheck the main file.
 
-Additional examples can also be found as separate files in the One directory.
+Additional examples can also be found as separate files in the Examples directory.
 -}
 
 open import Data.String using (String)
