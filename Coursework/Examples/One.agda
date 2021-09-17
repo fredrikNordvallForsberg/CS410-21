@@ -1,4 +1,4 @@
-module Examples.One where
+module Coursework.Examples.One where
 
 {-
 This file contains some sample PGM picture in String format for you to play with.

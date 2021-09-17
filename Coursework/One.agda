@@ -5,7 +5,7 @@
 -- Coursework 1
 ------------------------------------------------------------------------
 
-module One where
+module Coursework.One where
 
 ----------------------------------------------------------------------------
 -- COURSEWORK 1 -- WARMING UP, LOGIC, AND GRAY SCALE IMAGE MANIPULATION
@@ -301,7 +301,7 @@ open Data.Maybe
    maxVal = white. You can see some examples in the Examples.One file, and in the Examples directory.
 -}
 
-open import Examples.One
+open import Coursework.Examples.One
 
 {- Notice how data earlier in the file determines the format of the
    following data; a dependent type!
