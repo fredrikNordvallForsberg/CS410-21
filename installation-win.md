@@ -2,7 +2,7 @@
 
 This short guide will help you get Agda 2.6.2 running on a Windows 10 machine.
 
-1\. Get the [Haskell Platform](https://www.haskell.org/platform/windows.html) and follow the instructions. You can use the minimal installer for this class. Note that you will need an administrave PowerShell prompt when installing Chocolatey.
+1\. Get the [Haskell Platform](https://www.haskell.org/platform/windows.html) and follow the instructions. You can use the minimal installer for this class. Note that you will need an administrator PowerShell prompt when installing Chocolatey.
 
 2\. Run 
 ``` 
