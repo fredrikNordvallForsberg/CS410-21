@@ -96,41 +96,8 @@ data ⊢sk_ : Formula -> Set where
   K : ∀ {A B} → ⊢sk A ⇒ B ⇒ A
   S : ∀ {A B C} → ⊢sk (A ⇒ B ⇒ C) ⇒ (A ⇒ B) ⇒ A ⇒ C
 
-SKtoND : ∀ {A} → ⊢sk A -> ε ⊢ A
-SKtoND (app d e) = app (SKtoND d) (SKtoND e)
-SKtoND K = abs (abs (weak hyp))
-SKtoND S = abs (abs (abs (app (app (weak (weak hyp)) hyp) (app (weak hyp) hyp))))
-
-data _⊢skv_ : Context -> Formula -> Set where
-  hyp : ∀ {Γ A} → Γ · A ⊢skv A
-  weak : ∀ {Γ A B } → Γ ⊢skv A → Γ · B ⊢skv A
-  app : ∀ {Γ A B} → Γ ⊢skv A ⇒ B → Γ ⊢skv A → Γ ⊢skv B
-  K : ∀ {Γ A B} → Γ ⊢skv A ⇒ B ⇒ A
-  S : ∀ {Γ A B C} → Γ ⊢skv (A ⇒ B ⇒ C) ⇒ (A ⇒ B) ⇒ A ⇒ C
-
-SKVtoSK : ∀ {A} → ε ⊢skv A -> ⊢sk A
-SKVtoSK (app d e) = app (SKVtoSK d) (SKVtoSK e)
-SKVtoSK K = K
-SKVtoSK S = S
-
-NDtoSKV : ∀ {Γ A} → Γ ⊢ A -> Γ ⊢skv A
-NDtoSKV hyp = hyp
-NDtoSKV (weak d) = weak (NDtoSKV d)
-NDtoSKV (abs d) = absSK (NDtoSKV d)
-  where
-    absSK : ∀ {Γ A B } → Γ · A ⊢skv B →  Γ ⊢skv A ⇒ B
-    absSK {A = A} hyp = app (app S K) (K {B = A})
-    absSK (weak d) = app K d
-    absSK (app d e) = app (app S (absSK d)) (absSK e)
-    absSK K = app K K
-    absSK S = app K S
-NDtoSKV (app d e) = app (NDtoSKV d) (NDtoSKV e)
-
-NDtoSK : ∀ {A} → ε ⊢ A -> ⊢sk A
-NDtoSK = SKVtoSK ∘ NDtoSKV
 
 infix 3 ⊢sk_
-infix 3 _⊢skv_
 infix 3 _⊢_
 infixl 4 _·_
 infixr 6 _⇒_
